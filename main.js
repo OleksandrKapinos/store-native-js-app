@@ -78,7 +78,9 @@ class GoodsCard extends Card {
 
 
 // Closure
+//Outer environment
 function makeCounter() {
+    //Local environment
     let count = 0;
     return function () {
         count = count + 5;
@@ -88,7 +90,9 @@ function makeCounter() {
 let getGoodsQuantity = makeCounter();
 
 //Closure
+//Outer environment
 function createErrorBlock(){
+    //Local environment
     let errorBox = document.createElement('div');
     errorBox.classList.add('error-box');
     let errorImage = document.createElement('img');
@@ -99,6 +103,7 @@ function createErrorBlock(){
     errorMessage.classList.add('error-message');
 
     return function(message){
+        // message - data from outer environment
         errorMessage.innerHTML = message;
         items.appendChild(errorBox);
         errorBox.appendChild(errorImage);

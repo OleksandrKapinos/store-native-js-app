@@ -1,7 +1,11 @@
 //Closure
+//Outer environment
 function urlCreator(baseUrl) {
+    //Local environment
+    // After first call local value of 'url' will be baseUrl
     const url = baseUrl;
     return function (param = '') {
+        //When we use this function value of 'url' will be same
         return `${url}/${param}`
     }
 }

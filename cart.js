@@ -46,7 +46,6 @@ class Cart {
     renderCartContent = (cartContent) => {
         cartContent.innerHTML = '';
         this.cartList.forEach(item => createCardItemElement(item, cartContent));
-        // this.renderCartSum();
     };
 
     addItemToCart = (newItem) => {
@@ -67,7 +66,6 @@ class Cart {
             let container = document.querySelector('.cart-content');
             createCardItemElement(newGoods, container);
         }
-        // this.renderCartSum();
         cartService.setCardList(this.cartList);
     };
 
@@ -75,16 +73,8 @@ class Cart {
         this.cartList = this.cartList.filter(item => item.goods.id !== currentItemId);
         cartService.setCardList(this.cartList);
         let currentItem = document.querySelector(`.cart-item-box-${currentItemId}`);
-        // this.renderCartSum();
-        currentItem.innerHTML = '';
-    };
-
-    renderCartSum = () => {
-        const cartSum = document.querySelector('.cart-sum');
-        let sum = this.cartList.reduce((sum, current) => {
-            return sum + current.count * current.goods.price;
-        }, 0);
-        cartSum.innerHTML = `Sum: ${sum}$`
+        // currentItem.innerHTML = '';
+        currentItem.parentNode.removeChild(currentItem);
     };
 
     showCart = () => {
